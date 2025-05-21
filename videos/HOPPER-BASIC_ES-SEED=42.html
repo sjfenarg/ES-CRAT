@@ -58,5 +58,23 @@
     </script>
 
   </body>
+<video src="HOPPER-BASIC-ES-SEED=42.mp4" controls playsinline></video>
 
+<script>
+  window.addEventListener("message", (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      const video = document.querySelector("video");
+      if (!video) return;
+
+      if (data.command === "pause") {
+        video.pause();
+      } else if (data.command === "play") {
+        video.play();
+      }
+    } catch (e) {
+      // Ignore non-JSON or irrelevant messages
+    }
+  });
+</script>
 </html>

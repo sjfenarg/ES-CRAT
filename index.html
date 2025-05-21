@@ -48,7 +48,7 @@
     .video-wrapper {
       width: 100%;
       height: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 8; /* Reduced height (~70% shorter than 16:9) */
     }
 
     .video-wrapper iframe {
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-  <h1>Resultados por Entorno y Algoritmo</h1>
+  <h1>Experiment Results sorted by environment and algorithm</h1>
 
   <div class="grid-container">
     <div class="video-card">
@@ -121,5 +121,27 @@
     </div>
   </div>
 
+  <!-- 👇 JavaScript to manage play/pause per iframe -->
+  <script>
+    const iframes = document.querySelectorAll('iframe');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const iframe = entry.target;
+
+        const message = JSON.stringify({
+          command: entry.isIntersecting ? 'play' : 'pause'
+        });
+
+        iframe.contentWindow.postMessage(message, '*');
+      });
+    }, {
+      threshold: 0.5 // Adjust visibility trigger
+    });
+
+    iframes.forEach(iframe => observer.observe(iframe));
+  </script>
+
 </body>
 </html>
+  
