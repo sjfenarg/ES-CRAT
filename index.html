@@ -2,21 +2,144 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Visualizador de Video</title>
+  <title>Grid de Videos</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: #000;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
     }
-    iframe {
-      width: 100vw;
-      height: 100vh;
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .video-card {
+      background: #1f1f1f;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-title {
+      text-align: center;
+      padding: 10px 5px;
+      font-size: 14px;
+      font-weight: bold;
+      border-bottom: 1px solid #333;
+      word-break: break-all;
+    }
+    .video-card iframe {
+      width: 100%;
+      height: 300px;
       border: none;
+      flex-shrink: 0;
     }
   </style>
 </head>
 <body>
-  <iframe src="A.html" allowfullscreen></iframe>
+
+  <h1>Resultados por Entorno y Algoritmo</h1>
+
+  <div class="grid-container">
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-BASIC_ES-SEED=11</div>
+      <iframe src="videos/HALFCHEETAH-BASIC_ES-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-BASIC_ES-SEED=42</div>
+      <iframe src="videos/HALFCHEETAH-BASIC_ES-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-BASIC_ES-SEED=90</div>
+      <iframe src="videos/HALFCHEETAH-BASIC_ES-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-PPO-SEED=11</div>
+      <iframe src="videos/HALFCHEETAH-PPO-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-PPO-SEED=42</div>
+      <iframe src="videos/HALFCHEETAH-PPO-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HALFCHEETAH-PPO-SEED=90</div>
+      <iframe src="videos/HALFCHEETAH-PPO-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-BASIC_ES-SEED=11</div>
+      <iframe src="videos/HOPPER-BASIC_ES-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-BASIC_ES-SEED=42</div>
+      <iframe src="videos/HOPPER-BASIC_ES-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-BASIC_ES-SEED=90</div>
+      <iframe src="videos/HOPPER-BASIC_ES-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-PPO-SEED=11</div>
+      <iframe src="videos/HOPPER-PPO-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-PPO-SEED=42</div>
+      <iframe src="videos/HOPPER-PPO-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">HOPPER-PPO-SEED=90</div>
+      <iframe src="videos/HOPPER-PPO-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-BASIC_ES-SEED=11</div>
+      <iframe src="videos/WALKER2D-BASIC_ES-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-BASIC_ES-SEED=42</div>
+      <iframe src="videos/WALKER2D-BASIC_ES-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-BASIC_ES-SEED=90</div>
+      <iframe src="videos/WALKER2D-BASIC_ES-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-PPO-SEED=11</div>
+      <iframe src="videos/WALKER2D-PPO-SEED=11.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-PPO-SEED=42</div>
+      <iframe src="videos/WALKER2D-PPO-SEED=42.html" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-card">
+      <div class="video-title">WALKER2D-PPO-SEED=90</div>
+      <iframe src="videos/WALKER2D-PPO-SEED=90.html" allowfullscreen></iframe>
+    </div>
+
+  </div>
+
 </body>
 </html>
