@@ -20,7 +20,7 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       padding: 20px;
       box-sizing: border-box;
@@ -33,11 +33,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .video-card:hover {
-      transform: scale(1.02);
     }
 
     .video-title {
@@ -51,24 +46,27 @@
     }
 
     .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
-      height: 0;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
     }
 
     .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* still 2 columns */
+      }
+
       h1 {
         font-size: 20px;
       }
+
       .video-title {
         font-size: 14px;
       }
@@ -80,7 +78,6 @@
   <h1>Resultados por Entorno y Algoritmo</h1>
 
   <div class="grid-container">
-
     <div class="video-card">
       <div class="video-title">HALFCHEETAH-BASIC_ES-SEED=42</div>
       <div class="video-wrapper">
@@ -122,26 +119,7 @@
         <iframe src="videos/WALKER2D-PPO-SEED=42.html" allowfullscreen></iframe>
       </div>
     </div>
-
   </div>
-
-  <script>
-    // Pause videos that are out of view
-    const iframes = document.querySelectorAll('iframe');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const iframe = entry.target;
-        if (!entry.isIntersecting) {
-          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        }
-      });
-    }, { threshold: 0.5 });
-
-    iframes.forEach(iframe => {
-      observer.observe(iframe);
-    });
-  </script>
 
 </body>
 </html>
