@@ -20,7 +20,7 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr; /* Always 1 column */
+      grid-template-columns: 1fr;
       gap: 20px;
       padding: 20px;
       box-sizing: border-box;
@@ -47,14 +47,12 @@
 
     .video-wrapper {
       width: 100%;
-      height: 100%;
       aspect-ratio: 16 / 8;
     }
 
-    .video-wrapper iframe {
+    .video-wrapper video {
       width: 100%;
       height: 100%;
-      border: none;
       display: block;
     }
 
@@ -77,65 +75,99 @@
     <div class="video-card">
       <div class="video-title">HALFCHEETAH-BASIC_ES-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/HALFCHEETAH-BASIC_ES-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/HALFCHEETAH-BASIC_ES-SEED=42.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
 
     <div class="video-card">
       <div class="video-title">HALFCHEETAH-PPO-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/HALFCHEETAH-PPO-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/HALFCHEETAH-PPO-SEED=42.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
 
     <div class="video-card">
       <div class="video-title">HOPPER-BASIC_ES-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/HOPPER-BASIC_ES-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/HOPPER-BASIC_ES-SEED=42.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
 
     <div class="video-card">
       <div class="video-title">HOPPER-PPO-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/HOPPER-PPO-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/HOPPER-PPO-SEED=11.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
 
     <div class="video-card">
       <div class="video-title">WALKER2D-BASIC_ES-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/WALKER2D-BASIC_ES-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/WALKER2D-BASIC_ES-SEED=42.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
 
     <div class="video-card">
       <div class="video-title">WALKER2D-PPO-SEED=42</div>
       <div class="video-wrapper">
-        <iframe src="videos/WALKER2D-PPO-SEED=42.html" allowfullscreen allow="fullscreen"></iframe>
+        <video
+          src="videos/WALKER2D-PPO-SEED=42.mp4"
+          muted
+          playsinline
+          preload="none"
+          controls
+        ></video>
       </div>
     </div>
   </div>
 
-  <!-- 👇 JavaScript to manage play/pause per iframe -->
   <script>
-    const iframes = document.querySelectorAll('iframe');
+    const videos = document.querySelectorAll('video');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const iframe = entry.target;
-
-        const message = JSON.stringify({
-          command: entry.isIntersecting ? 'play' : 'pause'
-        });
-
-        iframe.contentWindow.postMessage(message, '*');
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {}); // in case autoplay is blocked
+        } else {
+          video.pause();
+        }
       });
     }, {
-      threshold: 0.5
+      threshold: 0.6 // video should be ~60% visible to play
     });
 
-    iframes.forEach(iframe => observer.observe(iframe));
+    videos.forEach(video => observer.observe(video));
   </script>
 
 </body>
